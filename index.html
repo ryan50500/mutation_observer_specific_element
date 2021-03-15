@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="one">one</div>
+    <div class="two">two</div>
+    <div class="thre">three</div>
+    <div id="watch">watch this</div>
+    
+
+    <script>
+        MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+        // watch only for changes on div ID with 'watch'
+        var FRe = document.getElementById('watch');
+        var observer = new MutationObserver(function(mutations, observer) {
+        // run your function here
+        console.log('changes to watch ID');
+        console.log(mutations, observer);
+        // ...  
+        });
+        // define what element should be observed by the observer
+        // and what types of mutations trigger the callback
+        observer.observe(FRe, {
+        subtree: true,
+        attributes: true,
+        childList: true
+        //...
+        });
+    </script>
+</body>
+</html>
